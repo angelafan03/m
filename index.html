@@ -117,6 +117,102 @@
             <img class="image center max-width-800 add-top-margin-small" src="img/tableaumap.png">
             <br>
             <img class="image center max-width-800 add-top-margin-small" src="img/tableaubars.png">
+            
+            
+           <p class ="text"> 
+             I also used Python and the Pandas library to get exact statistics of new countries that were present in each cohort 
+             (the code is not the cleanest or most efficient).
+            </p>
+            
+            <p class="text text-center graph-title">
+              Code snippets of initial exploratory analysis
+            </p>
+            <img class="image center max-width-800 add-top-margin-small" src="img/python2.png">
+            <br>
+            <img class="image center max-width-800 add-top-margin-small" src="img/python1.png">
+            
+          <p class="text">After presenting my initial work to the rest of the data lab, discussing new questions that had come up, 
+            and seeing what everyone else had done, I decided to focus on creating network graphs of host and archival countries to 
+            illustrate any patterns in and across cohorts in this area. </p>
+            
+            
+            
+        <h2 id="text-only">Data Processing</h2>
+            <hr>
+            <h3>Miscellanious</h3>
+            <p class="text">
+             In general, I did not have to clean up the data much. There were only small differences between datasets that I had noted. 
+              In my exploratory analysis of the data, I noted that Cohort 1 had “Ephemera” as a material type, but later cohorts did not. 
+              However, I did not continue to work with the material types so I did not address this. In my work to prepare the data for the 
+              network graphs and computing more statistics, I removed NaN values at the bottom of some of the application datasets using dataframe 
+              indexing in Python. One cell in Cohort 2’s dataset used “México” while all other instances used “Mexico”, so I standardized the spelling 
+              across datasets. Other examples were fixing “Nigeria” was entered as “NIgeria” in one cell, and similarly standardizing “Republic of 
+              Congo” and “Republic of the Congo”. I made these small changes in Excel.
+            </p>
+            <br>
+            <h3>Cohort 5 Data</h3>
+            <p class="text"> 
+            Because we received the Cohort 5 application data towards the end of Spring Quarter, more data processing had to be done for that dataset. 
+            The dataset already contained detailed regions such as Southeast Asia and Latin America, but the data from other cohorts only had the more general “Americas” and “Asia”. 
+            I had already created the network graphs for the previous cohorts and written code to calculate their statistics, so to make my
+            visualizations uniform and to be able to use the same network preparation code that I had written, I added in the more general host and archival regions to the data. 
+            I also standardized the country names as some were written in the country's native language which some viewers might not understand. 
+            I also added a Host Country column based on the host institution recorded in the data.
+            </p>
+            <br>
+            <h3>Prepping for Network Graphs</h3>
+            <p class="text"> 
+            I used gephi to create the network graphs. To do this, I had to transform the data into “nodes” and “edges” files. 
+              The nodes files contain the country names as a label, a number assigned to it as an ID, and any other attributes to 
+              categorize the countries. The edges files contain source IDs, target IDs, and the types of connections between them. 
+              I had to change the data from country names to unique number identifiers and show the relationship between host and 
+              archival country using these number IDs. To do this, I used the Pandas library in Python again. I created a masterlist of 
+              nodes by creating a list of every unique host and archival country and looping through it to create a dictionary of countries 
+              and their IDs. I also created a dictionary matching each country to its region. At first, I just created one node .csv file 
+              for all cohorts using the node dictionary, but that gave me issues when exporting the graphs to be embedded into a website.
+              All the nodes would appear on the graph when exported, even when nodes not present in the particular cohort had been filtered
+              out in the gephi software. So, I kept the nodes dictionary but created separate node files for each cohort using a similar 
+              process as when creating the masterlist. These node files included region as an attribute so I could color-code the graphs 
+              by region.
+            </p>
+            <br>
+            <p class="text"> 
+            To create each edge file per cohort, I looped through each country in the Host Country and Archival Country columns of the dataframes,
+              checked for that country’s ID in the node dictionary, and appended the ID value to a list. I then wrote the list of host IDs, the 
+              list of archival IDs, and a list filled with the string ‘Directed’ into three columns in a .csv file. This is because each connection 
+              was directed, an application from one host country to fund work in an archival country. 
+            </p>
+            <br>
+            
+            <p class="text text-center graph-title">
+             Prepping data code snippets
+            </p>
+            <img class="image center max-width-800 add-top-margin-small" src="img/python3.png">
+            <br>
+            <img class="image center max-width-800 add-top-margin-small" src="img/python4.png">
+            <br>
+            <h3>Gathering Application Data Statistics</h3>
+            <p class="text">
+            Aside from preparing the data for gephi, I also used Python to gather statistics on total applications, funded applications, 
+              applications which were invited for detailed, applications by region, and applications where the host and archival country 
+              were the same and vice versa. To get applications by region, I simply looped through the “Host Region” columns of the dataframes. 
+              To get applications which were invited for detailed, I copied the original cohort application dataframe and dropped rows which were 
+              False in the “Invited for Detailed” column. To check whether the host and archival countries were the same, I applied a function to
+              each dataframe which created a new column stating True if they were the same and False if not.
+            </p>
+            <br>
+            <p class="text text-center graph-title">
+             Gathering statistics code snippets
+            </p>
+            <img class="image center max-width-800 add-top-margin-small" src="img/python5.png">
+            <br>
+            <img class="image center max-width-800 add-top-margin-small" src="img/python6.png">
+            <br>
+            <p class="text">
+            Much of the data processing done in Python, especially computing the statistics, was quite rudimentary. I just wanted 
+            to get the job done initially. However, I am looking to make the code more efficient now that I have created my graphs 
+              and computed the statistics. I will add how I changed the code to make it more robust in the future below.
+            </p>
         <!--End Text Only!-->
         <!-------------------------------------------------------------------------------------------->
         <!-------------------------------------------------------------------------------------------->
