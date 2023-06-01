@@ -292,6 +292,10 @@ hr {
   display: flex;
 }
 
+.banner>body {
+  margin-top: 20%;
+}
+
 .banner .banner-table {
   padding: 0;
   width: 100%;
