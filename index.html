@@ -169,8 +169,62 @@
             to get the job done initially. However, I am looking to make the code more efficient now that I have created my graphs 
               and computed the statistics. I will add how I changed the code to make it more robust in the future below.
             </p>
+           </div>
+        </div>
         <!--End Text Only!-->
-   
+           <!--Start Text Only-->
+        <div class="flex-row">
+          <div class="flex-item flex-column">
+            <h2 id="text-only">Creating Network Graphs</h2>
+            <hr>
+            <p class="text">
+            After importing the nodes and edges files into gephi, it initially looks like this:
+            </p>
+            <img class="image center max-width-800 add-top-margin-small" src="img/gephi1.png">
+            <br>
+            
+            <p class="text">
+            I classified each node by color in terms of region, and each edge (line) is colored the same as the host country. 
+              The size of each node reflects its out-degree, that is how many applications the country has made. The size of the label 
+              of the country name also reflects this. Nodes with lines connecting them indicates a relationship between a host country 
+              and an archival country in an application. Nodes that do not have any lines represent countries that are both host and 
+              archival in their application(s). I chose the Fruchtermann Reingold layout as it shows the networks most clearly and simply.
+            </p>
+            <br>
+            <p class="text text-center graph-title">
+              Cohort 1 Network in gephi
+            </p>
+            <img class="image center max-width-800 add-top-margin-small" src="img/gephi2.png">
+            
+            <br>
+           <p class ="text"> 
+             In gephi, nodes that have an outline of the node behind them represent “edges” where the host and archival country 
+             are the same. I liked the interactivity that was available in gephi; I was able to zoom in and out and hover over
+             nodes which highlighted them and their connections. 
+            </p>
+           
+            <img class="image center max-width-800 add-top-margin-small" src="img/gephi3.png">
+            <br>
+            
+            <p class="text"> 
+                    However, when exporting the graphs as PNGs, PDFs, or SVG files, I lost the interactivity.   
+                      </p>
+            
+            <br>
+            <p class="text text-center graph-title">
+              Exported Cohort 1 network graph as a PNG
+            </p>
+            <img class="image center max-width-800 add-top-margin-small" src="img/gephi4.png">
+            <br>
+            
+         
+          <p class="text">So, I installed a plugin allowing me to export my graphs to embed them into websites.
+            They do not look exactly the same as when they are in gephi, but they are still interactive (allow zooming in 
+            and hovering to highlight) and also can be viewed by attribute (region). On each page are some statistics of the
+            cohort applications. Clicking on the “More about this visualization” shows a pop-up explaining how to read the graph. 
+            The group selector highlights nodes by region. I have embedded my graphs below. </p>
+           </div>
+        </div>
         <!-------------------------------------------------------------------------------------------->
         <!--Start Text with Iframe-->
         <div class="flex-row">
